@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="weather-app">
+        <div class="background-image">
+            <div class="weather-container">
+                <div class="search-bar">
+                    <input type="text" id="search-location" placeholder="Search Location...">
+                    <button id="search-btn">
+                        <i style="color: whitesmoke" class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="weather-details">
+                    <h3>Today's Weather Forecast...</h3>
+                    <h3 class="descriptioon"></h3>
+                    <div class="today-weather">
+                        <p>Temp max:</p>
+                        <p>
+                            <span class="temp-max">19°</span>
+                            <i style="color:rgb(253, 141, 141)" class="fa-solid fa-temperature-three-quarters"></i>
+                        </p>
+
+                    </div>
+                    <div class="today-weather">
+                        <p>Temp min: </p>
+                        <p>
+                            <span class="temp-min">15°</span>
+                            <i style="color:rgb(105, 131, 244)" class="fa-solid fa-temperature-three-quarters"></i>
+                        </p>
+                    </div>
+                    <div class="today-weather">
+                        <p>Humidity: </p>
+                        <p>
+                            <span class="humidity">58%</span>
+                            <i style="color:rgb(188 189 196)" class="fa-solid fa-droplet"></i>
+                        </p>
+                    </div>
+                    <div class="today-weather">
+                        <p>Cloudy:</p>
+                        <p>
+                            <span class="cloudiness">86%</span><i class="fa-solid fa-cloud"></i>
+                        </p>
+                    </div>
+                    <div class="today-weather">
+                        <p>Wind:</p>
+                        <p>
+                            <span class="wind-speed">5km/h </span><i class="fa-solid fa-wind"></i>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="current-weather">
+                <h1><span class="current-temp">16°</span> London</h1>
+                <p id="datetime"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const dateElement = document.getElementById('datetime');
+
+        const now = new Date();
+
+        // Options for formatting the date and time
+        const options = {
+            hour: '2-digit',
+            minute: '2-digit',
+            weekday: 'long',
+            day: 'numeric',
+            month: 'short',
+            year: '2-digit',
+        };
+
+        // Format the date and time
+        const timeString = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+        const dateString = now.toLocaleDateString('en-GB', options);
+        const formattedDate = `${timeString} - ${dateString.split(', ')[0]}, ${dateString.split(', ')[1]}`;
+
+        // Display the formatted date and time
+        dateElement.innerHTML = `<i class="fas fa-clock"></i> ${formattedDate}`;
+    </script>
+</body>
+
+</html>
